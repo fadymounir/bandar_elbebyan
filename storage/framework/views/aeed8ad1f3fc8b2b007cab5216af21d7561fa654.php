@@ -1,0 +1,2 @@
+
+<?php echo $__env->make('dashboard.main_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/null/Desktop/bandar_elbebyan/resources/views/dashboard/subviews/index.blade.php ENDPATH**/ ?>
