@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
+            $table->string('avatar')->nullable();
             $table->string('password');
             $table->enum('type', ['admin', 'user']);
             $table->boolean('is_active')->default(1);
