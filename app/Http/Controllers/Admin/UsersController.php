@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Dashboard;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Exceptions\Exception;
 
-class UsersController extends Controller
+class UsersController extends Dashboard
 {
     /**
      * @throws Exception
@@ -18,7 +18,7 @@ class UsersController extends Controller
             $users = User::query()->where('type', 'user');
             return datatables($users)
                 ->addColumn('name', function () {
-
+                    return $this->componentsPath('spanTag');
                 })
                 ->addColumn('email', function () {
 

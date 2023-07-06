@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Dashboard;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends Dashboard
 {
     public function index(Request $request)
     {
