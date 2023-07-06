@@ -40,7 +40,7 @@
             </div>
             <a class="ps-menu--sticky" href="#"><i class="icon-menu"></i></a>
             <div class="ps-logo">
-              <a href="index.html">
+              <a href="/">
                 <div class="right--div">
                   <span class="ar-carc">بـنـدر</span>
                   <span class="en-carc">Al Debeyan</span>
