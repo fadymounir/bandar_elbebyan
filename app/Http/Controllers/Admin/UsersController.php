@@ -34,6 +34,6 @@ class UsersController extends Dashboard
                 })
                 ->make();
         }
-        return view('admin.subviews.home.index');
+        return view('admin.subviews.users.index');
     }
 }

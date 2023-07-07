@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        dd("Asd");
+        $this->call(DefaultProfileAndRole::class);
+        $this->call(UsersPermissionSeeder::class);
+        $this->call(SuperAdminUserSeeder::class);
     }
 }

@@ -12,7 +12,8 @@
 
 
 {{--start of additional_js--}}
-    @yield('additional_js')
+    @yield('scripts')
+    @stack('custom-scripts')
 {{--end of additional_js--}}
 
 	</body>

@@ -13,7 +13,7 @@
         <title>{{$meta_title ?? ''}}</title>
 
         @include('admin.components.header.header_components')
-
+        @stack('custom-css')
 	</head>
 
 <!--end::Head-->

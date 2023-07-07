@@ -19,4 +19,7 @@
     @include('admin.components.header.load_combine_css_en')
 
 <?php endif; ?>
+
+    <link rel="stylesheet" href="{{url('/')}}/Admin/assets/css/default.css">
+
 <!--end::Layout Themes-->
