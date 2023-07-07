@@ -29,6 +29,9 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::table('product_colors_images', function (Blueprint $table) {
+            $table->dropForeign('product_colors_images_product_id_foreign');
+        });
         Schema::dropIfExists('product_colors_images');
     }
 };

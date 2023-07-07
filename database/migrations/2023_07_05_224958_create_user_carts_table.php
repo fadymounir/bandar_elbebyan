@@ -34,6 +34,11 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::table('user_carts', function (Blueprint $table) {
+            $table->dropForeign('user_carts_product_id_foreign');
+            $table->dropForeign('user_carts_product_size_id_foreign');
+            $table->dropForeign('user_carts_product_color_id_foreign');
+        });
         Schema::dropIfExists('user_carts');
     }
 };
