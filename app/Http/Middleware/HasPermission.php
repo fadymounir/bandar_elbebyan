@@ -18,7 +18,10 @@ class HasPermission
     {
         if (!$request->user()->hasPermission($permission)) {
             if ($request->ajax()) {
-                abort(response()->json(__('unauthorized'), 403));
+                abort(response()->json([
+                    'status'=>410,
+                    'message'=>__('admin.you_do_not_have_permission_to_perform_this_action')
+                ]));
             }
             abort(403);
         }

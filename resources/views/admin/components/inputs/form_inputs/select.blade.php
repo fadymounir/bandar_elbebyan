@@ -15,7 +15,7 @@
         {!! $options ?? '' !!}
     </select>
 
-    <span class="form-text {{ $select_warning_class ?? 'text-danger'  }}">
+    <span id="{{$select_name}}_input" class="form-text {{ $select_warning_class ?? 'text-danger'  }}">
             {{ $select_warngin_message ?? '' }}
     </span>
 </div>

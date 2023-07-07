@@ -20,27 +20,6 @@ class Role extends Model
      */
     protected $appends = ['name', 'actions'];
 
-    /**
-     * get the role name
-     */
-    public function getNameAttribute()
-    {
-        $role = $this;
-        return Cache::rememberForever(
-            'users_management_role_' . $this->id . '_' . App::getLocale(),
-            function () use ($role) {
-                $role = $role
-                    ->translations()
-                    ->where('language_id', getCurrentLanguage()->id)
-                    ->first();
-                return $role ? $role->name : null;
-            }
-        );
-    }
-
-    /**
-     * get the actions attribute
-     */
     public function getActionsAttribute()
     {
         return null;

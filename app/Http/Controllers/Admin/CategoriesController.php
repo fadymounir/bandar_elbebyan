@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Dashboard
+class CategoriesController extends Dashboard
 {
     public function index(Request $request)
     {

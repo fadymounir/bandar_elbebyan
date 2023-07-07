@@ -5,21 +5,21 @@
             {"data": "name", name: "users.name"},
             {"data": "phone", name: "users.phone"},
             {"data": "email", name: "users.email"},
-            {"data": "avatar", name: "users.avatar"},
+            {"data": "role", name: "role"},
             {"data": "is_active", name: "users.is_active"},
             {"data": "update", name: "update"},
             {"data": "created_at", name: "users.created_at"},
         ]);
         oTable.orderBy([1, 'desc']);
-        oTable.addAjaxUrlWithData('{{route('admin.users.index')}}', function (send) {
+        oTable.addAjaxUrlWithData('{{route('admin.admins.index')}}', function (send) {
 
         });
         oTable.build();
 
         $('.addNewUser').on('click', function () {
             resetFormToDefault();
-            $('#exampleModalLabel').text('{{__('admin.create_new_user')}}');
-            $('#action_type').val('createNewUser');
+            $('#exampleModalLabel').text('{{__('admin.create_new_admin')}}');
+            $('#action_type').val('createNewAdmin');
             $('#addEditUser').modal('show');
         });
 
@@ -27,9 +27,9 @@
 
             let form     = $('.form');
             let formData = new FormData(form[0]);
-            let path     = "{{route('admin.users.create')}}";
-            if ($('#action_type').val() == 'editUser') {
-                path = "{{route('admin.users.update')}}"
+            let path     = "{{route('admin.admins.create')}}";
+            if ($('#action_type').val() == 'editAdmin') {
+                path = "{{route('admin.admins.update')}}"
             }
             ajaxRequest(path, formData, function (response) {
                 if (response.code == 200) {
@@ -45,11 +45,11 @@
             let userId   = $(this).data('id');
             let formData = new FormData();
             formData.append('user_id', userId);
-            let path = "{{route('admin.users.activation')}}";
+            let path = "{{route('admin.admins.activation')}}";
 
             swal({
-                title: "تفعيل & تعطيل المستخدم",
-                text: "هل انت متاكد من اتمامك لعملية التفعيل او التعطيل للمستخدم",
+                title: "تفعيل & تعطيل المسئول",
+                text: "هل انت متاكد من اتمامك لعملية التفعيل او التعطيل المسئول",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
@@ -68,17 +68,18 @@
         $('body').on('click', '.editUser', function () {
             resetFormToDefault();
             let userId   = $(this).data('id');
-            let path     = "{{route('admin.users.getUserInfo')}}";
+            let path     = "{{route('admin.admins.getAdminInfo')}}";
             let formData = new FormData();
                 formData.append('userId', userId);
             ajaxRequest(path, formData, function (response) {
                 $('#name').val(response.Data.name);
                 $('#phone').val(response.Data.phone);
                 $('#email').val(response.Data.email);
+                $('#role_id').val(response.Data.role_id);
             });
             $('#user_id').val(userId);
-            $('#exampleModalLabel').text('{{__('admin.update_user')}}');
-            $('#action_type').val('editUser');
+            $('#exampleModalLabel').text('{{__('admin.update_admin')}}');
+            $('#action_type').val('editAdmin');
             $('#addEditUser').modal('show');
         });
 

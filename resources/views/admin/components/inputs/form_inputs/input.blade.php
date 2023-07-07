@@ -15,7 +15,7 @@
         value="{{$input_value ?? ''}}"
     />
 
-    <span class="form-text {{ $input_warning_class ?? 'text-danger'  }}">
+    <span id="{{$input_name}}_input" class="form-text input_warning {{ $input_warning_class ?? 'text-danger'  }}">
             {{ $input_warngin_message ?? '' }}
     </span>
 </div>

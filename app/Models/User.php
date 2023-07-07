@@ -2,9 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\RolesPermission\Role;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+
 class User extends Authenticatable
 {
     protected $fillable = [
@@ -43,7 +46,7 @@ class User extends Authenticatable
         return count($permissions) ? true : false;
     }
 
-    public function permissions():Collection
+    public function permissions(): Collection
     {
         $user = $this;
 
@@ -66,6 +69,11 @@ class User extends Authenticatable
             ])->where(function ($query) {
                 $query->where('models.is_active', 1)->orWhereNull('permissions.model_id');
             })->get();
+    }
+
+    public function role():BelongsTo
+    {
+        return $this->belongsTo(Role::class,'role_id');
     }
 
 

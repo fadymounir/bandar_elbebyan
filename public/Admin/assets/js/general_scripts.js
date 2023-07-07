@@ -14,6 +14,20 @@ function ajaxRequest(path, formData, callback = null, type = 'POST') {
         },
         success: function (response) {
             loading();
+
+            if (response.status == 410) {
+                swal("!warning", response.message, "warning");
+                return;
+            }
+
+            if (response.code == 400) {
+                response.Errors.forEach(function (error) {
+                    $(`#${error.field}_input`).text(error.errorMsg);
+                });
+                return;
+            }
+
+
             if (callback != null) callback(response);
         },
         error: function (response) {
@@ -23,6 +37,12 @@ function ajaxRequest(path, formData, callback = null, type = 'POST') {
 
         }
     });
+}
+
+function resetFormToDefault() {
+    $('.input_warning').text('');
+    $(".form :input").val("");
+    $(".form :checkbox").prop("checked", false);
 }
 
 function loading() {

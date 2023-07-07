@@ -1,12 +1,30 @@
 <?php
 
 return [
-    'users'      => 'المستخدمين',
-    'name'       => 'الاسم',
-    'phone'      => 'رقم الهاتف',
-    'email'      => 'البريد الالكتروني',
-    'avatar'     => 'الصروة الشخصية',
-    'status'     => 'الحالة',
-    'created_at' => 'تاريخ الانشاء',
-    'actions'    => 'العمليات المتاحة'
+    'you_do_not_have_permission_to_perform_this_action' => 'you do not have Permission To Perform This Action',
+    'dashboard'                                         => 'لوحة التحكم',
+    'admins'                                            => 'المسئولين',
+    'roles'                                             => 'الصلاحيات',
+    'close'                                             => 'اغلاق',
+    'submit'                                            => 'حفظ التغيرات',
+    'users'                                             => 'المستخدمين',
+    'name'                                              => 'الاسم',
+    'phone'                                             => 'رقم الهاتف',
+    'email'                                             => 'البريد الالكتروني',
+    'avatar'                                            => 'الصورة  الشخصية',
+    'status'                                            => 'الحالة',
+    'created_at'                                        => 'تاريخ الانشاء',
+    'actions'                                           => 'العمليات المتاحة',
+    'create_new_user'                                   => 'اضافة مستخدم جديد',
+    'update'                                            => 'تعديل',
+    'is_active'                                         => 'مفعل',
+    'dis_active'                                        => 'غير مفعل',
+    'user_name'                                         => 'أسم المستخدم',
+    'password'                                          => 'الرقم السري',
+    'you_operation_is_done_successfully'                => 'تمت العملية بنجاح',
+    'update_user'                                       => 'تعديل بيانات المستخدم',
+    'role'                                              => 'صلاحياتة',
+    'create_new_admin'                                  => 'اضافة مسئول جديد',
+    'update_admin'                                      => 'تعديل بيانات المسئول',
+    'categories'=>'الاقسام'
 ];

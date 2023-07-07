@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('name_ar');
             $table->string('image');
             $table->foreignId('category_id')->nullable()->references('id')->on('categories');
+            $table->boolean('is_active')->default(1);
             $table->timestamps();
         });
     }

@@ -102,9 +102,9 @@ class O_Datatable {
 
 
 function refreshTable() {
-    $('.globalDraw').val("all").selectpicker('refresh');
-    $('input[type="checkbox"]').prop("checked", false);
-    $('input[type="checkbox"]').val('test');
+    // $('.globalDraw').val("all").selectpicker('refresh');
+    // $('input[type="checkbox"]').prop("checked", false);
+    // $('input[type="checkbox"]').val('test');
     oTable.draw();
 
 }

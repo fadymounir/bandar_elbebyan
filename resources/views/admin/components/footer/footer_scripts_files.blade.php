@@ -10,10 +10,22 @@
 
     ];
 
+    $cdnJs =[
+        'https://unpkg.com/sweetalert/dist/sweetalert.min.js'
+    ];
+
 ?>
 
 
 <?php foreach($jsList as $key=>$item): ?>
     <script src="{{url('/')}}/{{$item}}"></script>
 <?php endforeach; ?>
+
+<?php foreach($cdnJs as $key=>$item): ?>
+    <script src="{{$item}}"></script>
+<?php endforeach; ?>
+
+
+
+
 
