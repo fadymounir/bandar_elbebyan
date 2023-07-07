@@ -21,7 +21,7 @@ class UsersPermissionSeeder extends Seeder
         Permission::insert(['name' => "access-users", 'module_id' => $module->id, 'guard_name' => 'web', 'created_at' => now(), 'updated_at' => now()]);
         $model_service = new ModelService();
         $model_service->createModelAndAssignPermissions('users', $module->id, [
-            'listing-users',
+            'listening-users',
             'create-user',
             'update-user',
             'view-user'

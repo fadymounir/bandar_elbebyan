@@ -3,7 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 class User extends Authenticatable
 {
     protected $fillable = [
@@ -35,4 +36,37 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function hasPermission(string $permission): bool
+    {
+        $permissions = $this->permissions()->where('permission', $permission);
+        return count($permissions) ? true : false;
+    }
+
+    public function permissions():Collection
+    {
+        $user = $this;
+
+        return DB::table('permissions')->join('profile_permissions', 'permissions.id', '=', 'profile_permissions.permission_id')
+            ->join('profiles', 'profiles.id', '=', 'profile_permissions.profile_id')
+            ->join('role_profiles', 'role_profiles.profile_id', '=', 'profiles.id')
+            ->join('modules', 'permissions.module_id', '=', 'modules.id')
+            ->leftJoin('models', 'permissions.model_id', '=', 'models.id')
+            ->select(
+                [
+                    'permissions.id',
+                    DB::raw('permissions.name AS permission'),
+                    DB::raw('modules.name AS module_name'),
+                    DB::raw('models.name AS model_name'),
+                ]
+            )
+            ->where([
+                ['role_profiles.role_id', $user->role_id],
+                ['modules.is_active', 1]
+            ])->where(function ($query) {
+                $query->where('models.is_active', 1)->orWhereNull('permissions.model_id');
+            })->get();
+    }
+
+
 }
