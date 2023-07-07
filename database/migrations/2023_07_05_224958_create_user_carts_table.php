@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('user_carts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->foreignId('product_size_id')->references('id')->on('product_sizes');
             $table->foreignId('product_color_id')->references('id')->on('product_colors_images');
