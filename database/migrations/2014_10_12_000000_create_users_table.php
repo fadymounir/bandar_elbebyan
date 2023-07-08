@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('password');
             $table->enum('type', ['admin', 'user']);
             $table->boolean('is_active')->default(1);
-            $table->unsignedBigInteger('role_id')->nullable();
+            $table->foreignId('role_id')->nullable()->references('id')->on('roles');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
@@ -35,6 +35,9 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_role_id_foreign');
+        });
         Schema::dropIfExists('users');
     }
 };

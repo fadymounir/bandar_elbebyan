@@ -1,7 +1,17 @@
 <div id="kt_header" class="header header-fixed">
     <!--begin::Container-->
     <div class="container-fluid d-flex align-items-stretch justify-content-between">
-        <div></div>
+        <!--begin::Info-->
+        <div class="d-flex align-items-center flex-wrap mr-2">
+            <!--begin::Page Title-->
+            <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@yield('header_title')</h5>
+            <!--end::Page Title-->
+            <!--begin::Actions-->
+            <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-4 bg-gray-200"></div>
+            <span class="text-muted font-weight-bold mr-4">@yield('header_sub_title')</span>
+            <!--end::Actions-->
+        </div>
+        <!--end::Info-->
         <div class="topbar header-menu-wrapper-right">
             <div class="topbar-item">
                 <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">

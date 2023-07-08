@@ -28,6 +28,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_products_favouite');
+        Schema::table('user_products_favorite',function (Blueprint $table){
+            $table->dropForeign('user_products_favorite_user_id_foreign');
+            $table->dropForeign('user_products_favorite_product_id_foreign');
+        });
+        Schema::dropIfExists('user_products_favorite');
     }
 };

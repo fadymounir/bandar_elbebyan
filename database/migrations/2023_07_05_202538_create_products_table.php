@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -27,7 +26,7 @@ return new class extends Migration
             $table->double('price');
             $table->boolean('is_discount');
             $table->boolean('discount_value');
-            $table->enum('discount_type',['percentage','value']);
+            $table->enum('discount_type', ['percentage', 'value']);
             $table->boolean('is_available')->default(1);
             $table->boolean('is_active')->default(1);
             $table->timestamps();
