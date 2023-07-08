@@ -6,7 +6,6 @@ use App\Helpers\ModelService;
 use App\Helpers\ProfileService;
 use App\Models\RolesPermission\Module;
 use App\Models\RolesPermission\Permission;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AdminsPermissionSeeder extends Seeder
