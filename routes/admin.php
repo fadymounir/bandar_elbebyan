@@ -36,7 +36,7 @@ Route::name('admin.')->prefix('adminPanel')->middleware(['isAdmin'])->group(func
         Route::post('/categories/createCategory', 'createCategory')->middleware('hasPermission:create-category')->name('create');
         Route::post('/categories/updateCategory', 'updateCategory')->middleware('hasPermission:update-category')->name('update');
         Route::post('/categories/activation', 'activationCategory')->middleware('hasPermission:update-category')->name('activation');
-        Route::post('/categories/getCategoryInfo', 'getCategoryInfo')->middleware('hasPermission:listening-category')->name('getCategoryInfo');
+        Route::post('/categories/getCategoryInfo', 'getCategoryInfo')->middleware('hasPermission:listening-categories')->name('getCategoryInfo');
     });
 
 

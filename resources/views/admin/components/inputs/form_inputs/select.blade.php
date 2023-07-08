@@ -19,3 +19,20 @@
             {{ $select_warngin_message ?? '' }}
     </span>
 </div>
+
+
+@if(isset($selected_option))
+    @push('custom-scripts')
+        <script>
+            $(document).ready(function () {
+                let selected_options = '{{$selected_option}}';
+                if (selected_options == 'first_element') {
+                    $('#{{$select_name}} option:first').prop('selected', true);
+                }
+                else {
+                    $('#{{$select_name}}').val('{{$selected_option}}')
+                }
+            })
+        </script>
+    @endpush
+@endif

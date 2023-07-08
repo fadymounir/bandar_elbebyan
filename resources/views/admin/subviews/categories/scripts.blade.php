@@ -2,53 +2,72 @@
     <script>
         var oTable = new O_Datatable('#table');
         oTable.addColumns([
-            {"data": "name", name: "users.name"},
-            {"data": "phone", name: "users.phone"},
-            {"data": "email", name: "users.email"},
-            {"data": "avatar", name: "users.avatar"},
-            {"data": "is_active", name: "users.is_active"},
+            {"data": "name_ar", name: "categories.name_ar"},
+            {"data": "name_en", name: "categories.name_en"},
+            {"data": "category_type", name: "category_type"},
+            {"data": "parent_category", name: "parent_category"},
+            {"data": "image", name: "categories.image"},
+            {"data": "is_active", name: "categories.is_active"},
             {"data": "update", name: "update"},
-            {"data": "created_at", name: "users.created_at"},
+            {"data": "created_at", name: "categories.created_at"},
         ]);
         oTable.orderBy([1, 'desc']);
-        oTable.addAjaxUrlWithData('{{route('admin.users.index')}}', function (send) {
+        oTable.addAjaxUrlWithData('{{route('admin.categories.index')}}', function (send) {
 
         });
         oTable.build();
 
-        $('.addNewUser').on('click', function () {
+
+        function initInputsBasedInType() {
+            let category_type = $('#category_type').val();
+            if (category_type == 'main_category' || category_type == null) {
+                $('.main_category_div').hide(400);
+                $('.image_div').hide(400);
+            }
+            else {
+                $('.main_category_div').show(400);
+                $('.image_div').show(400);
+            }
+        }
+
+        $('body').on('change', '#category_type', function () {
+            initInputsBasedInType();
+        });
+
+        $('.addNewCategory').on('click', function () {
             resetFormToDefault();
-            $('#exampleModalLabel').text('{{__('admin.create_new_user')}}');
-            $('#action_type').val('createNewUser');
-            $('#addEditUser').modal('show');
+            initInputsBasedInType();
+            $('#exampleModalLabel').text('{{__('admin.create_new_category')}}');
+            $('#action_type').val('createNewCategory');
+            $('#addEditCategory').modal('show');
         });
 
         $('#submit').on('click', function () {
 
             let form     = $('.form');
             let formData = new FormData(form[0]);
-            let path     = "{{route('admin.users.create')}}";
-            if ($('#action_type').val() == 'editUser') {
-                path = "{{route('admin.users.update')}}"
+            let path     = "{{route('admin.categories.create')}}";
+            if ($('#action_type').val() == 'editCategory') {
+                path = "{{route('admin.categories.update')}}"
             }
             ajaxRequest(path, formData, function (response) {
                 if (response.code == 200) {
                     swal("done!", response.Message, "success");
                     resetFormToDefault();
                     refreshTable();
-                   $('#addEditUser').modal('hide');
+                    $('#addEditCategory').modal('hide');
                 }
             });
         });
 
         $('body').on('click', '.activation', function () {
-            let userId   = $(this).data('id');
-            let formData = new FormData();
-            formData.append('user_id', userId);
-            let path = "{{route('admin.users.activation')}}";
+            let categoryId = $(this).data('id');
+            let formData   = new FormData();
+            formData.append('category_id', categoryId);
+            let path = "{{route('admin.categories.activation')}}";
 
             swal({
-                title: "تفعيل & تعطيل المستخدم",
+                title: "تفعيل & تعطيل القسم",
                 text: "هل انت متاكد من اتمامك لعملية التفعيل او التعطيل للمستخدم",
                 icon: "warning",
                 buttons: true,
@@ -65,23 +84,30 @@
 
         });
 
-        $('body').on('click', '.editUser', function () {
+        $('body').on('click', '.editCategory', function () {
             resetFormToDefault();
-            let userId   = $(this).data('id');
-            let path     = "{{route('admin.users.getUserInfo')}}";
-            let formData = new FormData();
-                formData.append('userId', userId);
+            let categoryId = $(this).data('id');
+            let path       = "{{route('admin.categories.getCategoryInfo')}}";
+            let formData   = new FormData();
+            formData.append('categoryId', categoryId);
             ajaxRequest(path, formData, function (response) {
-                $('#name').val(response.Data.name);
-                $('#phone').val(response.Data.phone);
-                $('#email').val(response.Data.email);
-            });
-            $('#user_id').val(userId);
-            $('#exampleModalLabel').text('{{__('admin.update_user')}}');
-            $('#action_type').val('editUser');
-            $('#addEditUser').modal('show');
-        });
+                $('#name_ar').val(response.Data.name_ar);
+                $('#name_en').val(response.Data.name_en);
+                $('#main_category').val(response.Data.category_id);
 
+                if (response.Data.category_id == null) {
+                    $('#category_type').val('main_category').change();
+                }
+                else {
+                    $('#category_type').val('sub_category').change();
+                }
+
+            });
+            $('#category_id').val(categoryId);
+            $('#exampleModalLabel').text('{{__('admin.update_category')}}');
+            $('#action_type').val('editCategory');
+            $('#addEditCategory').modal('show');
+        });
     </script>
 @endcomponent
 

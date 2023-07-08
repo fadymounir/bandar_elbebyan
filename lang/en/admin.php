@@ -26,5 +26,14 @@ return [
     'role'                                              => 'صلاحياتة',
     'create_new_admin'                                  => 'اضافة مسئول جديد',
     'update_admin'                                      => 'تعديل بيانات المسئول',
-    'categories'=>'الاقسام'
+    'categories'                                        => 'الاقسام',
+    'name_ar'                                           => 'الاسم بالعربي',
+    'name_en'                                           => 'الاسم بالانجليزي',
+    'image'                                             => 'الصورة',
+    'create_new_category'                               => 'اضافة قسم جديد',
+    'category_type'                                     => 'نوع القسم',
+    'main_category'                                     => 'قسم رئيسي',
+    'sub_category'                                      => 'قسم فرعي',
+    'main_categories'                                   => 'الاقسام الرئيسية',
+    'parent_category'                                   => 'تابع لقسم'
 ];
