@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminsController;
+use App\Http\Controllers\Admin\AreaController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\UserAddressController;
 use App\Http\Controllers\Admin\UsersController;
@@ -36,8 +39,35 @@ Route::name('admin.')->prefix('adminPanel')->middleware(['isAdmin'])->group(func
         Route::get('/users/addresses', 'index')->middleware('hasPermission:listening-users-addresses')->name('index');
         Route::post('/users/addresses/createUserAddress', 'createUserAddress')->middleware('hasPermission:create-user-address')->name('createUserAddress');
         Route::post('/users/addresses/updateUserAddress', 'updateUserAddress')->middleware('hasPermission:update-user-address')->name('updateUserAddress');
+        Route::post('/users/addresses/deleteUserAddress', 'deleteUserAddress')->middleware('hasPermission:update-user-address')->name('deleteUserAddress');
         Route::post('/users/addresses/getUserAddressInfo', 'getUserAddressInfo')->middleware('hasPermission:listening-users-addresses')->name('getUserAddressInfo');
+        Route::post('/users/addresses/getUserAddressDetails', 'getUserAddressDetails')->middleware('hasPermission:listening-users-addresses')->name('getUserAddressDetails');
     });
+
+
+    Route::name('areas.')->controller(AreaController::class)->group(function () {
+        Route::get('/areas', 'index')->middleware('hasPermission:listening-areas')->name('index');
+        Route::post('/areas/createArea', 'createUserAddress')->middleware('hasPermission:create-area')->name('createArea');
+        Route::post('/areas/updateArea', 'updateUserAddress')->middleware('hasPermission:update-area')->name('updateArea');
+        Route::post('/areas/getArea', 'getUserAddressInfo')->middleware('hasPermission:listening-areas')->name('getAreas');
+    });
+
+    Route::name('cities.')->controller(CityController::class)->group(function () {
+        Route::get('/cities', 'index')->middleware('hasPermission:listening-areas')->name('index');
+        Route::post('/cities/createCity', 'createUserAddress')->middleware('hasPermission:create-cities')->name('createCity');
+        Route::post('/cities/updateCity', 'updateUserAddress')->middleware('hasPermission:update-city')->name('updateCity');
+        Route::post('/cities/getAreaCities', 'getAreaCities')->middleware('hasPermission:listening-cities')->name('getAreaCities');
+    });
+
+    Route::name('districts.')->controller(DistrictController::class)->group(function () {
+        Route::get('/districts', 'index')->middleware('hasPermission:listening-areas')->name('index');
+        Route::post('/districts/createDistrict', 'createUserAddress')->middleware('hasPermission:create-area')->name('createDistrict');
+        Route::post('/districts/updateDistrict', 'updateUserAddress')->middleware('hasPermission:update-area')->name('updateDistrict');
+        Route::post('/districts/getCityDistricts', 'getCityDistricts')->middleware('hasPermission:listening-areas')->name('getCityDistricts');
+    });
+
+
+
 
     Route::name('categories.')->controller(CategoriesController::class)->group(function () {
         Route::get('/categories', 'index')->middleware('hasPermission:listening-categories')->name('index');

@@ -83,17 +83,6 @@
             $('#action_type').val('editUser');
             $('#addEditUser').modal('show');
         });
-
-        $('body').on('click', '.userAddress', function () {
-            let userId   = $(this).data('id');
-            let path     = "{{route('admin.user-address.getUserAddressInfo')}}";
-            let formData = new FormData();
-            formData.append('userId', userId);
-            ajaxRequest(path, formData, function (response) {
-                console.log(response);
-            });
-        })
-
     </script>
 @endcomponent
 

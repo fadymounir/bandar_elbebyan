@@ -5,119 +5,76 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Dashboard;
 use App\Http\Requests\User\CreateUser;
 use App\Http\Requests\User\UpdateUser;
+use App\Http\Requests\UserAddress\CreateUserAddress;
+use App\Http\Requests\UserAddress\UpdateUserAddress;
 use App\Models\Location\District;
+use App\Models\Order\Order;
 use App\Models\User;
 use App\Models\User\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class UserAddressController extends Dashboard
 {
-    public function index(Request $request)
+    public function createUserAddress(CreateUserAddress $request)
     {
-        if (\request()->ajax()) {
-            $users = User::query()->where('type', 'user');
-            return datatables($users)
-                ->addColumn('name', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->name
-                    ]);
-                })
-                ->addColumn('email', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->email
-                    ]);
-                })
-                ->addColumn('phone', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->phone
-                    ]);
-                })
-                ->addColumn('avatar', function ($user) {
-                    return $this->viewContent('img', [
-                        'src'    => $user->avatar,
-                        'width'  => '50px',
-                        'height' => '50px'
-                    ]);
-                })
-                ->addColumn('user_addresses', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => __('admin.user_addresses'),
-                        'class'        => 'btn btn-primary userAddress',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
-                ->addColumn('is_active', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => $user->is_active ? __('admin.is_active') : __('admin.dis_active'),
-                        'class'        => $user->is_active ? 'btn btn-primary activation' : 'btn btn-danger activation',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
-                ->addColumn('update', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => __('admin.update') . '<i class="fa fa-user-edit"></i>',
-                        'class'        => 'btn btn-primary editUser',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
-                ->addColumn('add_new_address', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => __('admin.add_new_address') . '<i class="fa fa-location-arrow"></i>',
-                        'class'        => 'btn btn-primary addUserAddress',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
-                ->addColumn('created_at', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->created_at
-                    ]);
-                })
-                ->make();
+        if ($request->get('is_default') == 1) {
+            UserAddress::where('user_id', $request->get('user_address_id'))->update(['is_default' => 0]);
         }
-        return view('admin.subviews.users.index');
-    }
-
-    public function createUser(CreateUser $request)
-    {
-        User::create([
-            'name'     => $request->get('name'),
-            'email'    => $request->get('email'),
-            'phone'    => $request->get('phone'),
-            'type'     => 'user',
-            'password' => Hash::make($request->get('password'))
+        UserAddress::create([
+            'user_id'     => $request->get('user_address_id'),
+            'district_id' => $request->get('district_id'),
+            'street'      => $request->get('street'),
+            'building_no' => $request->get('building_no'),
+            'is_default'  => $request->get('is_default'),
         ]);
-        return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
-    }
 
-    public function activationUser(Request $request)
-    {
-        $user            = User::find($request->get('user_id'));
-        $user->is_active = !$user->is_active;
-        $user->save();
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
     public function getUserAddressInfo(Request $request)
     {
         $userAddress = UserAddress::getUserAddressListInFormat($request->get('userId'));
-        dd($userAddress);
-        return $this->getJsonSuccessResponse("", $user);
+        return \view('admin.subviews.users.components.userAddressComponents', ['userAddress' => $userAddress])->render();
     }
 
-    public function updateUser(UpdateUser $request)
+    public function deleteUserAddress(Request $request)
     {
-        $attrsToUpdate = [
-            'name'  => $request->get('name'),
-            'email' => $request->get('email'),
-            'phone' => $request->get('phone'),
-        ];
+        $checkExistInOrder = Order::where('address_id', $request->get('addressId'))->count();
 
-        if (!is_null($request->get('password'))) {
-            $attrsToUpdate['password'] = Hash::make($request->get('password'));
+        if ($checkExistInOrder >= 1) {
+            return response()->json(['Status' => 410, 'Message' => 'لا يمكن اتمام لعملية الحذف حيث ان العنوان مرتبط بطلبات']);
         }
 
-        User::find($request->get('user_id'))->update($attrsToUpdate);
+        UserAddress::find($request->get('addressId'))->delete();
+
+        return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
+    }
+
+    public function getUserAddressDetails(Request $request)
+    {
+        $userAddress                  = UserAddress::find($request->get('userAddressId'));
+        $data['selected_area_id']     = $userAddress->district->city->area_id;
+        $data['selected_city_id']     = $userAddress->district->city->id;
+        $data['selected_district_id'] = $userAddress->district_id;
+        $data['user_address_data']    = $userAddress->toArray();
+
+        return $this->getJsonSuccessResponse("", $data);
+    }
+
+    public function updateUserAddress(UpdateUserAddress $request)
+    {
+        if ($request->get('is_default') == 1) {
+            UserAddress::where('user_id', UserAddress::find($request->get('address_id'))->user_id)->update(['is_default' => 0]);
+        }
+        UserAddress::find($request->get('address_id'))->update([
+            'district_id' => $request->get('district_id'),
+            'street'      => $request->get('street'),
+            'building_no' => $request->get('building_no'),
+            'is_default'  => $request->get('is_default'),
+        ]);
+
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 }

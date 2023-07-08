@@ -37,6 +37,7 @@ class UserAddress extends Model
             ->join('areas', 'areas.id', 'cities.area_id')
             ->where('user_id', $userId)
             ->select([
+                'user_addresses.id          as id',
                 'areas.name_ar              as area_ar',
                 'areas.name_en              as area_en',
                 'cities.name_ar             as city_ar',
@@ -46,7 +47,7 @@ class UserAddress extends Model
                 'user_addresses.street      as street',
                 'user_addresses.building_no as building_no',
                 'user_addresses.is_default  as is_default'
-            ]);
+            ])->get();
     }
 
 }
