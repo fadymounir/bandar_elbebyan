@@ -35,5 +35,15 @@ return [
     'main_category'                                     => 'قسم رئيسي',
     'sub_category'                                      => 'قسم فرعي',
     'main_categories'                                   => 'الاقسام الرئيسية',
-    'parent_category'                                   => 'تابع لقسم'
+    'parent_category'                                   => 'تابع لقسم',
+    'user_addresses'                                    => 'عنواين المستخدم',
+    'add_new_address'                                   => 'اضافة عنوان جديد',
+    'area'                                              => 'المنطقة',
+    'city'                                              => 'المدينة',
+    'district'                                          => 'الحي',
+    'street'                                            => 'الشارع',
+    'building_no'                                       => 'رقم المبني',
+    'is_default'                                        => 'اساسي',
+    'user_address'                                      => 'عنواين المستخدم',
+    'delete'                                            => 'حذف'
 ];

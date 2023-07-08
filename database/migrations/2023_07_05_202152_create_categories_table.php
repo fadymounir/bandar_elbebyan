@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->string('name_en');
             $table->string('name_ar');
             $table->string('image');
+            $table->boolean('is_active')->default(1);
+            $table->boolean('is_home')->default(0);
             $table->foreignId('category_id')->nullable()->references('id')->on('categories');
             $table->timestamps();
         });

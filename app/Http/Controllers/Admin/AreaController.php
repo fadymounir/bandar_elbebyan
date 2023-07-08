@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Dashboard;
-use App\Http\Requests\User\CreateUser;
+use App\Http\Requests\Admin\CreateAdmin;
 use App\Http\Requests\User\UpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Dashboard
+class AreaController extends Dashboard
 {
     public function index(Request $request)
     {
         if (\request()->ajax()) {
-            $users = User::query()->where('type', 'user');
+            $users = User::query()->where('type', 'admin');
             return datatables($users)
                 ->addColumn('name', function ($user) {
                     return $this->viewContent('span', [
@@ -31,20 +31,6 @@ class UsersController extends Dashboard
                         'content' => $user->phone
                     ]);
                 })
-                ->addColumn('avatar', function ($user) {
-                    return $this->viewContent('img', [
-                        'src'    => $user->avatar,
-                        'width'  => '50px',
-                        'height' => '50px'
-                    ]);
-                })
-                ->addColumn('user_addresses', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => __('admin.user_addresses')."<i class='fa fa-location-arrow'></i>",
-                        'class'        => 'btn btn-primary userAddress',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
                 ->addColumn('is_active', function ($user) {
                     return $this->viewContent('span', [
                         'content'      => $user->is_active ? __('admin.is_active') : __('admin.dis_active'),
@@ -59,11 +45,9 @@ class UsersController extends Dashboard
                         'free_content' => 'data-id="' . $user->id . '"'
                     ]);
                 })
-                ->addColumn('add_new_address', function ($user) {
+                ->addColumn('role', function ($user) {
                     return $this->viewContent('span', [
-                        'content'      => __('admin.add_new_address') . '<i class="fa fa-location-arrow"></i>',
-                        'class'        => 'btn btn-primary addUserAddress',
-                        'free_content' => 'data-id="' . $user->id . '"'
+                        'content'      => $user->role->name,
                     ]);
                 })
                 ->addColumn('created_at', function ($user) {
@@ -73,22 +57,23 @@ class UsersController extends Dashboard
                 })
                 ->make();
         }
-        return view('admin.subviews.users.index');
+        return view('admin.subviews.admins.index');
     }
 
-    public function createUser(CreateUser $request)
+    public function createAdmin(CreateAdmin $request)
     {
         User::create([
             'name'     => $request->get('name'),
             'email'    => $request->get('email'),
             'phone'    => $request->get('phone'),
-            'type'     => 'user',
-            'password' => Hash::make($request->get('password'))
+            'type'     => 'admin',
+            'password' => Hash::make($request->get('password')),
+            'role_id'  => $request->get('role_id')
         ]);
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
-    public function activationUser(Request $request)
+    public function activationAdmin(Request $request)
     {
         $user            = User::find($request->get('user_id'));
         $user->is_active = !$user->is_active;
@@ -96,22 +81,24 @@ class UsersController extends Dashboard
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
-    public function getUserInfo(Request $request)
+    public function getAdminInfo(Request $request)
     {
         $user = User::where('id', $request->get('userId'))->select([
             'name',
             'email',
             'phone',
+            'role_id',
         ])->first()->toArray();
         return $this->getJsonSuccessResponse("", $user);
     }
 
-    public function updateUser(UpdateUser $request)
+    public function updateAdmin(UpdateUser $request)
     {
         $attrsToUpdate = [
-            'name'  => $request->get('name'),
-            'email' => $request->get('email'),
-            'phone' => $request->get('phone'),
+            'name'    => $request->get('name'),
+            'email'   => $request->get('email'),
+            'phone'   => $request->get('phone'),
+            'role_id' => $request->get('role_id')
         ];
 
         if (!is_null($request->get('password'))) {
@@ -121,5 +108,4 @@ class UsersController extends Dashboard
         User::find($request->get('user_id'))->update($attrsToUpdate);
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
-
 }

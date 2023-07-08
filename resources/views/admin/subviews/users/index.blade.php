@@ -1,7 +1,9 @@
 @extends('admin.main_layout')
 @section('header_title',__('admin.users'))
 @section('content')
-    @include('admin.subviews.users.addEditUser')
+    @include('admin.subviews.users.components.addEditUser')
+    @include('admin.subviews.users.components.userAddressModal')
+    @include('admin.subviews.users.components.addEditUserAddress')
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -21,7 +23,9 @@
                                 <td>{{__('admin.phone')}}</td>
                                 <td>{{__('admin.email')}}</td>
                                 <td>{{__('admin.avatar')}}</td>
+                                <td>{{__('admin.user_addresses')}}</td>
                                 <td>{{__('admin.status')}}</td>
+                                <td>{{__('admin.add_new_address')}}</td>
                                 <td>{{__('admin.update')}}</td>
                                 <td>{{__('admin.created_at')}}</td>
                             </tr>
@@ -35,5 +39,6 @@
 @endsection
 
 @section('scripts')
-    @include('admin.subviews.users.scripts')
+    @include('admin.subviews.users.indexScripts')
+    @include('admin.subviews.users.userAddressScripts')
 @endsection
