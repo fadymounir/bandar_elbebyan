@@ -114,7 +114,7 @@
                                                     بطاقاتي</a>
                                             </li>
                                             <li>
-                                                <a href="index.html">
+                                                <a href="{{ url('signout') }}">
                                                     <i class="icon-exit"></i>
                                                     تسجيل خروج</a>
                                             </li>
@@ -198,59 +198,6 @@
                     <nav class="ps-main-menu">
                         <ul class="menu" id="categories_menu">
 
-                            <li class="has-mega-menu">
-                                <a href="{{url('products')}}">الاصناف
-                                    <span class="sub-toggle">
-                      <i class="fa fa-chevron-down"></i>
-                    </span>
-                                </a>
-                                <div class="mega-menu">
-                                    <ul class="sub-menu--mega">
-                                        <li><a href="{{url('products')}}">خاتم</a></li>
-                                        <li><a href="{{url('products')}}">حلق</a></li>
-                                        <li><a href="{{url('products')}}">سوارة</a></li>
-                                        <li><a href="{{url('products')}}">عقد</a></li>
-                                        <li><a href="{{url('products')}}">قلادة</a></li>
-                                        <li><a href="{{url('products')}}">خلخال</a></li>
-                                        <li><a href="{{url('products')}}">خاتم تونز</a></li>
-                                        <li><a href="{{url('products')}}">أطقم الماس</a></li>
-                                        <li><a href="{{url('products')}}">شوكر</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="has-mega-menu">
-                                <a href="{{url('products')}}">مجوهرات فاخره
-                                    <span class="sub-toggle">
-                      <i class="fa fa-chevron-down"></i>
-                    </span>
-                                </a>
-                                <div class="mega-menu">
-                                    <ul class="sub-menu--mega">
-                                        <li><a href="{{url('products')}}">خاتم سولتير</a></li>
-                                        <li><a href="{{url('products')}}">حلق سولتير</a></li>
-                                        <li><a href="{{url('products')}}">قلادة</a></li>
-                                        <li><a href="{{url('products')}}">أطقم سولتير</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <li class="has-mega-menu">
-                                <a href="{{url('products')}}">الخطوبه والزفاف
-                                    <span class="sub-toggle">
-                      <i class="fa fa-chevron-down"></i>
-                    </span>
-                                </a>
-                                <div class="mega-menu">
-                                    <ul class="sub-menu--mega">
-                                        <li><a href="{{url('products')}}">أطقم شبكات</a></li>
-                                        <li><a href="{{url('products')}}">خاتم توينز</a></li>
-                                        <li><a href="{{url('products')}}">دبله</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-
                         </ul>
                     </nav>
                 </div>
@@ -291,10 +238,31 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (data) {
-                if(data.data) {
+                if (data.data) {
 
                     $.each(data.data, function (k, v) {
                         if (v['sub_categories'].length > 0) {
+
+                            let item = '<li class="has-mega-menu">';
+                            item += '<a href="javascript:void(0)">' + v['name_ar'] +
+                                '<span class="sub-toggle">\n' +
+                                '<i class="fa fa-chevron-down"></i>\n' +
+                                '</span>\n' +
+                                '</a>' +
+                                '<div class="mega-menu"><ul class="sub-menu--mega">';
+
+                            for (let ii = 0; ii < v['sub_categories'].length; ii++) {
+                                let obj=v['sub_categories'][ii];
+                                item += '<li class="has-mega-menu">' +
+                                    '<a href="' + base_url + '/products?category_id=' + obj['id'] + '">' + obj['name_ar'] + '</a>' +
+                                    '</li>';
+                            }
+
+                            item += '</ul></div></li>';
+                            $("#categories_menu").append(
+                                item
+                            );
+
                         } else {
                             $("#categories_menu").append(
                                 '<li class="has-mega-menu">' +
@@ -305,12 +273,12 @@
                     });
                     $("#categories_menu").append(
                         '<li class="has-mega-menu">' +
-                        '<a href="' + base_url + '/about'+'">'+'من نحن</a>'+
+                        '<a href="' + base_url + '/about' + '">' + 'من نحن</a>' +
                         '</li>'
                     );
                     $("#categories_menu").append(
                         '<li class="has-mega-menu">' +
-                        '<a href="' + base_url + '/contact'+'">'+'تواصل معنا</a>'+
+                        '<a href="' + base_url + '/contact' + '">' + 'تواصل معنا</a>' +
                         '</li>'
                     );
                 }

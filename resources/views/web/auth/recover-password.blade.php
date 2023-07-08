@@ -23,58 +23,40 @@
 </head>
 
 <body>
-<section class="user-form-part">
 
+
+<section class="user-form-part">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                 <div class="user-form-logo">
-                    <a href="index.html"><img src="web/assets/img/logo.svg" alt="logo" /></a>
+                    <a href="/"><img src="web/assets/img/logo.svg" alt="logo" /></a>
                 </div>
                 <div class="user-form-card">
                     <div class="user-form-title">
-                        <h2>تسجيل الدخول الى حسابك</h2>
-                        <p>أدخل بريدك الإلكتروني وكلمة المرور</p>
+                        <h2>استعادة كلمة المرور</h2>
+                        <p>قم بإدخال البريد الالكتروني</p>
                     </div>
-                    @include('web.componants.messages')
-                    <form class="user-form" method="POST" action="{{url('signIn') }}">
-                        {{ csrf_field() }}
+
+
+                        <form class="user-form" method="POST" action="{{url('forgot') }}">
+                            {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" name="email" placeholder="البريد الإلكتروني" />
+                            <input type="email" name="email"  class="form-control @error('email') is-invalid @enderror" placeholder="البريد الإلكتروني" />
                             @error('email')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="كلمة المرور" />
-                            <a class="fa fa-eye-slash toogle-password" href="javascript:;"></a>
-                            @error('password')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="check" /><label class="form-check-label"
-                                                                                                         for="check">تذكرني</label>
-                        </div>
                         <div class="form-button">
                             <button type="submit" class="ps-btn ps-btn--warning">
-                                تسجيل دخول
+                                استعادة
                             </button>
                         </div>
-                        {{--<div class="form-button">--}}
-                            {{--<button type="button" class="login-with-google-btn">--}}
-                                {{--تسجيل الدخول عن طريق جوجل--}}
-                            {{--</button>--}}
-                        {{--</div>--}}
-                        <p class="lost-pass">
-                            نسيت كلمة المرور ؟
-                            <a href="{{url('recover-password')}}">استعادة كلمة المرور</a>
-                        </p>
                     </form>
                 </div>
                 <div class="user-form-remind">
                     <p>
-                        ليس لديك حساب ؟<a href="{{url('registeruser')}}">انشئ حسابك من هنا</a>
+                        تذكرت كلمة المرور ؟<a href="{{url('loginForm')}}">العودة الي تسجيل الدخول</a>
                     </p>
                 </div>
                 <div class="user-form-footer">

@@ -25,36 +25,19 @@
 
       <div class="container-fluid">
         <section class="ps-section--catg">
-          <div class="catg-item">
-            <a href="products.html">
-              <img src="web/assets/img/category/1.jpg" alt="" />
-              <p>سلاسل</p>
-            </a>
-          </div>
-          <div class="catg-item">
-            <a href="products.html">
-              <img src="web/assets/img/category/2.jpg" alt="" />
-              <p>اساور</p>
-            </a>
-          </div>
-          <div class="catg-item">
-            <a href="products.html">
-              <img src="web/assets/img/category/3.jpg" alt="" />
-              <p>حلق</p>
-            </a>
-          </div>
-          <div class="catg-item">
-            <a href="products.html">
-              <img src="web/assets/img/category/4.jpg" alt="" />
-              <p>خواتم</p>
-            </a>
-          </div>
-          <div class="catg-item">
-            <a href="products.html">
-              <img src="web/assets/img/category/2.jpg" alt="" />
-              <p>اساور</p>
-            </a>
-          </div>
+
+          @if($sub_categories)
+            @foreach($sub_categories as $sub_category)
+              <div class="catg-item">
+                <a href="{{url('/products?categpry_id='.$sub_category->id)}}">
+                  <img src="{{url($sub_category->image)}}" alt="" />
+                  <p>{{$sub_category->name_ar}}</p>
+                </a>
+              </div>
+            @endforeach
+          @endif
+
+
         </section>
 
         <div class="ps-home__content">

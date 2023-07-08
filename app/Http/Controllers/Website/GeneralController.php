@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class GeneralController extends Controller
@@ -25,10 +26,12 @@ class GeneralController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $sub_categories=Category::whereNotNull('category_id')->take(5)->get();
+        return view('welcome',compact('sub_categories'));
     }
     public function about()
     {
+        $settings=Setting::select('');
         return view('web.about');
     }
     public function contact()

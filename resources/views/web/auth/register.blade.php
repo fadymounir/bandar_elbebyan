@@ -26,6 +26,7 @@
 <section class="user-form-part">
     
     <div class="container">
+
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                 <div class="user-form-logo">
@@ -35,41 +36,42 @@
                     <div class="user-form-title">
                         <h2>انشاء حساب</h2>
                         <p>من فضلك قم بملئ الحقول التالية</p>
+                        @include('web.componants.messages')
                     </div>
                     <form class="user-form" method="POST" action="{{url('registeruser') }}">
 
                         {{ csrf_field() }}
                         <div class="form-group">
                             <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}"  placeholder="الاسم" />
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            {{--@error('name')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-group">
                             <input type="text"  class="form-control @error('phone') is-invalid @enderror" name="phone" required value="{{ old('phone') }}" placeholder="رقم الجوال" />
-                            @error('phone')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            {{--@error('phone')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-group">
                             <input type="email"  class="form-control @error('email') is-invalid @enderror" name="email" required value="{{ old('email') }}" placeholder="البريد الإلكتروني" />
-                            @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            {{--@error('email')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-group">
                             <input type="password"  class="form-control @error('password') is-invalid @enderror" required name="password" placeholder="كلمة المرور" />
                             <a class="fa fa-eye-slash toogle-password" href="javascript:;"></a>
-                            @error('password')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            {{--@error('password')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-group">
                             <input type="password"  class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="تأكيد كلمة المرور" />
                             <a class="fa fa-eye-slash toogle-password" href="javascript:;"></a>
-                            @error('password_confirmation')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            {{--@error('password_confirmation')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="check"  required/><label class="form-check-label"

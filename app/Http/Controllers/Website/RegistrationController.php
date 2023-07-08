@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 
+use App\Mail\ForgotPassword;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use DB;
 use App\Libraries\UploadImagesController;
 use Illuminate\Support\Facades\Log;
@@ -53,6 +55,24 @@ class RegistrationController extends Controller
             $membershipName = $membershipData->user->full_name;
         }
         return view('auth.joinus', compact('countries', 'cities', 'membership', 'membershipName'));
+    }
+
+    public function forgotPost(Request $request)
+    {
+        $request->validate([
+            'email'    => 'required|exists:users,email',
+        ]);
+        $credentials = $request->only('email');
+        $SixDigitRandomNumber = rand(100000,999999);
+        $new_password= Hash::make($SixDigitRandomNumber);
+        $update= User::where('email', $credentials['email'])->update(['password'=>$new_password]);
+        if($update){
+            $data['subject']="Reset Password";
+            $data['password']=$SixDigitRandomNumber;
+            $maill = Mail::to($credentials['email'])->send(new ForgotPassword($data));
+        }
+
+        return redirect()->to('/loginForm')->with('message', 'Reset Password is successfully check Your Email');
     }
 
 
@@ -268,7 +288,7 @@ class RegistrationController extends Controller
             }
             return redirect()->to('/memberProfile')->withSuccess('Your account is updated');
         }
-        return Redirect('/login');
+        return Redirect('/loginPost');
     }
 
     public function updateUserContactInformation(Request $request)
@@ -383,6 +403,10 @@ class RegistrationController extends Controller
     {
         return view('web.auth.login');
     }
+    public function recoverPassword()
+    {
+        return view('web.auth.recover-password');
+    }
 
     public function signIn(Request $request)
     {
@@ -397,7 +421,7 @@ class RegistrationController extends Controller
             return redirect()->to('/my-account')->with('message', 'Signed in Successful');
         }
 
-        return redirect("login")->withErrors('Login details are not valid');
+        return redirect("loginForm")->withErrors('Login details are not valid');
     }
 
     public function signOut()
