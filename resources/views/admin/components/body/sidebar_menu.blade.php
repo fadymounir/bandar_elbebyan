@@ -73,80 +73,40 @@
 
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
-                        <i class="menu-icon flaticon-tabs"></i>
-                        <span class="menu-text">Pages</span>
+                        <i class="menu-icon fa fa-building"></i>
+                        <span class="menu-text">المناطق والمدن</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
-												<span class="menu-link">
-													<span class="menu-text">Pages</span>
-												</span>
+                                <span class="menu-link">
+                                    <span class="menu-text">المناطق والمدن</span>
+                                </span>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="javascript:;" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-dot">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Error</span>
-                                    <i class="menu-arrow"></i>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.areas.index')}}" class="menu-link">
+                                    <i class="menu-icon fa fa-code-branch"></i>
+                                    <span class="menu-text">{{__('admin.area')}}</span>
                                 </a>
-                                <div class="menu-submenu">
-                                    <i class="menu-arrow"></i>
-                                    <ul class="menu-subnav">
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-1.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 1</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-2.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 2</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-3.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 3</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-4.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 4</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-5.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 5</span>
-                                            </a>
-                                        </li>
-                                        <li class="menu-item" aria-haspopup="true">
-                                            <a href="custom/pages/error/error-6.html" class="menu-link">
-                                                <i class="menu-bullet menu-bullet-dot">
-                                                    <span></span>
-                                                </i>
-                                                <span class="menu-text">Error 6</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
                             </li>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.cities.index')}}" class="menu-link">
+                                    <i class="menu-icon fa fa-city"></i>
+                                    <span class="menu-text">{{__('admin.city')}}</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-item" aria-haspopup="true">
+                                <a href="{{route('admin.districts.index')}}" class="menu-link">
+                                    <i class="menu-icon fa fa-chart-area"></i>
+                                    <span class="menu-text">{{__('admin.district')}}</span>
+                                </a>
+                            </li>
+
                         </ul>
                     </div>
                 </li>
