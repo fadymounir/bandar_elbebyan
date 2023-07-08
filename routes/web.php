@@ -4,7 +4,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Website\GeneralController;
 use App\Http\Controllers\Website\RegistrationController;
 use App\Http\Controllers\Website\User\MemberController;
+use App\Http\Controllers\Website\Product\ProductController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +20,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [GeneralController::class, 'index'])->name('welcome');
+Route::get('/about', [GeneralController::class, 'about'])->name('about');
+Route::get('/contact', [GeneralController::class, 'contact'])->name('contact');
+Route::get('/getAllCategories', [GeneralController::class, 'getAllCategories'])->name('getAllCategories');
 Route::get('/loginForm', [RegistrationController::class, 'loginForm'])->name('loginForm');
 Route::post('/signIn', [RegistrationController::class, 'signIn'])->name('signIn');
 Route::get('/registeruser', [RegistrationController::class, 'create'])->name('create');
 Route::post('/registeruser', [RegistrationController::class, 'store'])->name('store');
 Route::get('/my-account', [MemberController::class, 'index'])->name('my-account');
+Route::get('/products', [ProductController::class, 'index'])->name('products');
 
 Route::group(['middleware' => ['auth']], function () {
     /**
