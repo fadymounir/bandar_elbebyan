@@ -6,7 +6,9 @@
             {"data": "phone", name: "users.phone"},
             {"data": "email", name: "users.email"},
             {"data": "avatar", name: "users.avatar"},
+            {"data": "user_addresses", name: "user_addresses"},
             {"data": "is_active", name: "users.is_active"},
+            {"data": "add_new_address", name: "add_new_address"},
             {"data": "update", name: "update"},
             {"data": "created_at", name: "users.created_at"},
         ]);
@@ -36,7 +38,7 @@
                     swal("done!", response.Message, "success");
                     resetFormToDefault();
                     refreshTable();
-                   $('#addEditUser').modal('hide');
+                    $('#addEditUser').modal('hide');
                 }
             });
         });
@@ -70,7 +72,7 @@
             let userId   = $(this).data('id');
             let path     = "{{route('admin.users.getUserInfo')}}";
             let formData = new FormData();
-                formData.append('userId', userId);
+            formData.append('userId', userId);
             ajaxRequest(path, formData, function (response) {
                 $('#name').val(response.Data.name);
                 $('#phone').val(response.Data.phone);
@@ -81,6 +83,16 @@
             $('#action_type').val('editUser');
             $('#addEditUser').modal('show');
         });
+
+        $('body').on('click', '.userAddress', function () {
+            let userId   = $(this).data('id');
+            let path     = "{{route('admin.user-address.getUserAddressInfo')}}";
+            let formData = new FormData();
+            formData.append('userId', userId);
+            ajaxRequest(path, formData, function (response) {
+                console.log(response);
+            });
+        })
 
     </script>
 @endcomponent

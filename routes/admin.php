@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\UserAddressController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,13 @@ Route::name('admin.')->prefix('adminPanel')->middleware(['isAdmin'])->group(func
         Route::post('/users/updateUser', 'updateUser')->middleware('hasPermission:update-user')->name('update');
         Route::post('/users/activation', 'activationUser')->middleware('hasPermission:update-user')->name('activation');
         Route::post('/users/getUserInfo', 'getUserInfo')->middleware('hasPermission:listening-users')->name('getUserInfo');
+    });
+
+    Route::name('user-address.')->controller(UserAddressController::class)->group(function () {
+        Route::get('/users/addresses', 'index')->middleware('hasPermission:listening-users-addresses')->name('index');
+        Route::post('/users/addresses/createUserAddress', 'createUserAddress')->middleware('hasPermission:create-user-address')->name('createUserAddress');
+        Route::post('/users/addresses/updateUserAddress', 'updateUserAddress')->middleware('hasPermission:update-user-address')->name('updateUserAddress');
+        Route::post('/users/addresses/getUserAddressInfo', 'getUserAddressInfo')->middleware('hasPermission:listening-users-addresses')->name('getUserAddressInfo');
     });
 
     Route::name('categories.')->controller(CategoriesController::class)->group(function () {

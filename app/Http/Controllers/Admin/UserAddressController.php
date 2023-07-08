@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Dashboard;
 use App\Http\Requests\User\CreateUser;
 use App\Http\Requests\User\UpdateUser;
+use App\Models\Location\District;
 use App\Models\User;
+use App\Models\User\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Dashboard
+class UserAddressController extends Dashboard
 {
     public function index(Request $request)
     {
@@ -40,7 +42,7 @@ class UsersController extends Dashboard
                 })
                 ->addColumn('user_addresses', function ($user) {
                     return $this->viewContent('span', [
-                        'content'      => __('admin.user_addresses')."<i class='fa fa-location-arrow'></i>",
+                        'content'      => __('admin.user_addresses'),
                         'class'        => 'btn btn-primary userAddress',
                         'free_content' => 'data-id="' . $user->id . '"'
                     ]);
@@ -96,13 +98,10 @@ class UsersController extends Dashboard
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
-    public function getUserInfo(Request $request)
+    public function getUserAddressInfo(Request $request)
     {
-        $user = User::where('id', $request->get('userId'))->select([
-            'name',
-            'email',
-            'phone',
-        ])->first()->toArray();
+        $userAddress = UserAddress::getUserAddressListInFormat($request->get('userId'));
+        dd($userAddress);
         return $this->getJsonSuccessResponse("", $user);
     }
 
@@ -121,5 +120,4 @@ class UsersController extends Dashboard
         User::find($request->get('user_id'))->update($attrsToUpdate);
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
-
 }

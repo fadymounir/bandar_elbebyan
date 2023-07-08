@@ -21,7 +21,9 @@
                                 <td>{{__('admin.phone')}}</td>
                                 <td>{{__('admin.email')}}</td>
                                 <td>{{__('admin.avatar')}}</td>
+                                <td>{{__('admin.user_addresses')}}</td>
                                 <td>{{__('admin.status')}}</td>
+                                <td>{{__('admin.add_new_address')}}</td>
                                 <td>{{__('admin.update')}}</td>
                                 <td>{{__('admin.created_at')}}</td>
                             </tr>
