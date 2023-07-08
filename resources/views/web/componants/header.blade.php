@@ -45,7 +45,7 @@
                   <span class="ar-carc">بـنـدر</span>
                   <span class="en-carc">Al Debeyan</span>
                 </div>
-                <img src="assets/img/logo.svg" alt />
+                <img src="web/assets/img/logo.svg" alt />
                 <div class="left--div">
                   <span class="ar-carc">الـدبـيـان</span>
                   <span class="en-carc">Bandar</span>
@@ -59,12 +59,12 @@
                   <ul class="drop-menu-profile">
                     <li>
                       <a href="#">
-                        <img src="assets/img/saudi-arabia.png" alt="" />
+                        <img src="web/assets/img/saudi-arabia.png" alt="" />
                         عربي</a>
                     </li>
                     <li>
                       <a href="#">
-                        <img src="assets/img/united-kingdom.png" alt="" />
+                        <img src="web/assets/img/united-kingdom.png" alt="" />
                         انجليزي</a>
                     </li>
                   </ul>
@@ -79,44 +79,55 @@
                     </div>
                   </a>
                 </li> -->
-                <li>
-                  <a class="ps-header__item account-btn" href="my-account.html" id="login-modal">
-                    <i class="icon-user"></i>
-                    <div class="log-acc">
+                  @guest
+                      <li>
+                          <a class="ps-header__item cart-btn-header" href="{{url('loginForm')}}">
+                              <i class="icon-user"></i>
+                              <p>تسجيل دخول</p>
+
+                          </a>
+                      </li>
+                      @else
+                      <li>
+                          <a class="ps-header__item account-btn" href="my-account.html" id="login-modal">
+                              <i class="icon-user"></i>
+                              <div class="log-acc">
                       <span><span class="span-hello">مرحبا</span>
-                        abdelrahman</span>
-                    </div>
-                  </a>
-                  <div class="ps-login--modal">
-                    <ul class="drop-menu-profile">
-                      <li>
-                        <a href="my-account.html">
-                          <i class="icon-user"></i>
-                          الملف الشخصي</a>
+                        {{Auth::user()->name}}</span>
+                              </div>
+                          </a>
+                          <div class="ps-login--modal">
+                              <ul class="drop-menu-profile">
+                                  <li>
+                                      <a href="my-account.html">
+                                          <i class="icon-user"></i>
+                                          الملف الشخصي</a>
+                                  </li>
+                                  <li>
+                                      <a href="orders.html">
+                                          <i class="icon-bag2"></i>
+                                          طلباتي</a>
+                                  </li>
+                                  <li>
+                                      <a href="addresses.html">
+                                          <i class="icon-map-marker"></i>
+                                          عناويني</a>
+                                  </li>
+                                  <li>
+                                      <a href="credit-card.html">
+                                          <i class="icon-credit-card"></i>
+                                          بطاقاتي</a>
+                                  </li>
+                                  <li>
+                                      <a href="index.html">
+                                          <i class="icon-exit"></i>
+                                          تسجيل خروج</a>
+                                  </li>
+                              </ul>
+                          </div>
                       </li>
-                      <li>
-                        <a href="orders.html">
-                          <i class="icon-bag2"></i>
-                          طلباتي</a>
-                      </li>
-                      <li>
-                        <a href="addresses.html">
-                          <i class="icon-map-marker"></i>
-                          عناويني</a>
-                      </li>
-                      <li>
-                        <a href="credit-card.html">
-                          <i class="icon-credit-card"></i>
-                          بطاقاتي</a>
-                      </li>
-                      <li>
-                        <a href="index.html">
-                          <i class="icon-exit"></i>
-                          تسجيل خروج</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
+                  @endguest
+
                 <li>
                   <a class="ps-header__item cart-btn-header" href="wishlist.html">
                     <i class="icon-heart"></i>
@@ -135,7 +146,7 @@
                       <li class="ps-cart__item">
                         <div class="ps-product--mini-cart">
                           <a class="ps-product__thumbnail" href="product-details.html"><img
-                              src="assets/img/products/1.jpg" alt="alt" /></a>
+                              src="web/assets/img/products/1.jpg" alt="alt" /></a>
                           <div class="ps-product__content">
                             <a class="ps-product__name" href="product-details.html">خاتم ذهب عيار 18 قيراط برأس مزدوجة
                               مزينة بألماس
@@ -151,7 +162,7 @@
                       <li class="ps-cart__item">
                         <div class="ps-product--mini-cart">
                           <a class="ps-product__thumbnail" href="product-details.html"><img
-                              src="assets/img/products/3.jpg" alt="alt" /></a>
+                              src="web/assets/img/products/3.jpg" alt="alt" /></a>
                           <div class="ps-product__content">
                             <a class="ps-product__name" href="product-details.html">خاتم ستيتمنت مرصع بالالماس و حجر
                               أزرق مائي من
@@ -262,7 +273,7 @@
                 <span class="ar-carc">بـنـدر</span>
                 <span class="en-carc">Al Debeyan</span>
               </div>
-              <img src="assets/img/logo.svg" alt />
+              <img src="web/assets/img/logo.svg" alt />
               <div class="left--div">
                 <span class="ar-carc">الـدبـيـان</span>
                 <span class="en-carc">Bandar</span>

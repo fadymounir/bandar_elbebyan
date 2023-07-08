@@ -9,7 +9,7 @@
                   <div class="ps-footer--address">
                     <div class="ps-logo">
                       <a href="index.html">
-                        <img src="assets/img/logo.svg" />
+                        <img src="web/assets/img/logo.svg" />
                       </a>
                     </div>
                     <p>
@@ -54,10 +54,10 @@
                       </a>
                     </p>
                     <div class="flex-logos">
-                      <img src="assets/img/tamara-logo.png" alt="" />
-                      <img src="assets/img/tabby.png" alt="" />
+                      <img src="web/assets/img/tamara-logo.png" alt="" />
+                      <img src="web/assets/img/tabby.png" alt="" />
                       <a href="#">
-                        <img src="assets/img/maroof.png" alt="" />
+                        <img src="web/assets/img/maroof.png" alt="" />
                       </a>
                     </div>
                   </div>
@@ -114,7 +114,7 @@
               <p>جميع الحقوق محفوظة لمتجر جولد © 2023</p>
             </div>
             <div class="col-12 col-md-6 flex-payment">
-              <img src="assets/img/payment_options.png" alt="" />
+              <img src="web/assets/img/payment_options.png" alt="" />
             </div>
           </div>
         </div>
