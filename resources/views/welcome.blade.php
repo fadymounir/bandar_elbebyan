@@ -3,18 +3,17 @@
  
 @endsection
 @section('content')
-  
-    
+
 <div class="ps-home ps-home--1">
       <section class="ps-section--banner">
         <div class="owl-carousel" data-owl-auto="true" data-owl-loop="true" data-owl-speed="7000" data-owl-gap="0"
           data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1"
           data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
           <a href="products.html" class="ps-banner">
-            <img src="assets/img/slider/1.jpg" alt="" />
+            <img src="web/assets/img/slider/1.jpg" alt="" />
           </a>
           <a href="products.html" class="ps-banner">
-            <img src="assets/img/slider/2.jpg" alt="" />
+            <img src="web/assets/img/slider/2.jpg" alt="" />
           </a>
           <a href="javascript:;" class="ps-banner">
             <video autoplay muted>
@@ -28,31 +27,31 @@
         <section class="ps-section--catg">
           <div class="catg-item">
             <a href="products.html">
-              <img src="assets/img/category/1.jpg" alt="" />
+              <img src="web/assets/img/category/1.jpg" alt="" />
               <p>سلاسل</p>
             </a>
           </div>
           <div class="catg-item">
             <a href="products.html">
-              <img src="assets/img/category/2.jpg" alt="" />
+              <img src="web/assets/img/category/2.jpg" alt="" />
               <p>اساور</p>
             </a>
           </div>
           <div class="catg-item">
             <a href="products.html">
-              <img src="assets/img/category/3.jpg" alt="" />
+              <img src="web/assets/img/category/3.jpg" alt="" />
               <p>حلق</p>
             </a>
           </div>
           <div class="catg-item">
             <a href="products.html">
-              <img src="assets/img/category/4.jpg" alt="" />
+              <img src="web/assets/img/category/4.jpg" alt="" />
               <p>خواتم</p>
             </a>
           </div>
           <div class="catg-item">
             <a href="products.html">
-              <img src="assets/img/category/2.jpg" alt="" />
+              <img src="web/assets/img/category/2.jpg" alt="" />
               <p>اساور</p>
             </a>
           </div>
@@ -62,8 +61,8 @@
           <section class="shop-tabby-tamara">
             <h1>تسوق الآن. وادفع لاحقاً مع</h1>
             <div class="logos-tby-tm">
-              <img src="assets/img/tabby.png" alt="" />
-              <img src="assets/img/tamara-logo.png" alt="" />
+              <img src="web/assets/img/tabby.png" alt="" />
+              <img src="web/assets/img/tamara-logo.png" alt="" />
             </div>
           </section>
 
@@ -71,7 +70,7 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="promo-img">
-                  <a href="#"><img src="assets/img/sm-banner.png" alt="" /></a>
+                  <a href="#"><img src="web/assets/img/sm-banner.png" alt="" /></a>
                 </div>
               </div>
             </div>
@@ -113,7 +112,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/1.jpg" alt="alt" />
+                          <img src="web/assets/img/products/1.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -151,7 +150,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/2.jpg" alt="alt" />
+                          <img src="web/assets/img/products/2.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -185,7 +184,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/3.jpg" alt="alt" />
+                          <img src="web/assets/img/products/3.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -223,7 +222,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/4.jpg" alt="alt" />
+                          <img src="web/assets/img/products/4.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -258,7 +257,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/5.jpg" alt="alt" />
+                          <img src="web/assets/img/products/5.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -297,7 +296,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/6.jpg" alt="alt" />
+                          <img src="web/assets/img/products/6.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -332,7 +331,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/7.jpg" alt="alt" />
+                          <img src="web/assets/img/products/7.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -372,12 +371,12 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="promo-img">
-                  <a href="jewelry-recycling.html"><img src="assets/img/sample.jpg" alt="" /></a>
+                  <a href="jewelry-recycling.html"><img src="web/assets/img/sample.jpg" alt="" /></a>
                 </div>
               </div>
               <div class="col-sm-8">
                 <div class="promo-img">
-                  <a href="products.html"><img src="assets/img/black-d.webp" alt="" /></a>
+                  <a href="products.html"><img src="web/assets/img/black-d.webp" alt="" /></a>
                 </div>
               </div>
             </div>
@@ -397,7 +396,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/8.jpg" alt="alt" />
+                          <img src="web/assets/img/products/8.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -435,7 +434,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/9.jpg" alt="alt" />
+                          <img src="web/assets/img/products/9.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -470,7 +469,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/10.jpg" alt="alt" />
+                          <img src="web/assets/img/products/10.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -508,7 +507,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/11.jpg" alt="alt" />
+                          <img src="web/assets/img/products/11.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -543,7 +542,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/12.jpg" alt="alt" />
+                          <img src="web/assets/img/products/12.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -581,7 +580,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/13.png" alt="alt" />
+                          <img src="web/assets/img/products/13.png" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -616,7 +615,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/14.png" alt="alt" />
+                          <img src="web/assets/img/products/14.png" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -667,7 +666,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/8.jpg" alt="alt" />
+                          <img src="web/assets/img/products/8.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -705,7 +704,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/9.jpg" alt="alt" />
+                          <img src="web/assets/img/products/9.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -740,7 +739,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/10.jpg" alt="alt" />
+                          <img src="web/assets/img/products/10.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -778,7 +777,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/11.jpg" alt="alt" />
+                          <img src="web/assets/img/products/11.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -813,7 +812,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/12.jpg" alt="alt" />
+                          <img src="web/assets/img/products/12.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -851,7 +850,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/13.png" alt="alt" />
+                          <img src="web/assets/img/products/13.png" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -886,7 +885,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/14.png" alt="alt" />
+                          <img src="web/assets/img/products/14.png" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -937,7 +936,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/19.jpg" alt="alt" />
+                          <img src="web/assets/img/products/19.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -975,7 +974,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/20.jpg" alt="alt" />
+                          <img src="web/assets/img/products/20.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -1007,7 +1006,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/21.jpg" alt="alt" />
+                          <img src="web/assets/img/products/21.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -1045,7 +1044,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/22.jpg" alt="alt" />
+                          <img src="web/assets/img/products/22.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -1077,7 +1076,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/23.jpg" alt="alt" />
+                          <img src="web/assets/img/products/23.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -1114,7 +1113,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/24.jpg" alt="alt" />
+                          <img src="web/assets/img/products/24.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">
@@ -1145,7 +1144,7 @@
                     <div class="ps-product__thumbnail">
                       <a class="ps-product__image" href="product-details.html">
                         <figure>
-                          <img src="assets/img/products/25.jpg" alt="alt" />
+                          <img src="web/assets/img/products/25.jpg" alt="alt" />
                         </figure>
                       </a>
                       <div class="ps-product__actions">

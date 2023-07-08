@@ -12,7 +12,7 @@
     <meta name="description" content="Bandar Al Debeyan ">
     <meta name="keywords" content="Bandar Al Debeyan Author">
     <meta name="author" content="Bandar Al Debeyan">
-    <link rel="icon" href="assets/img/logo.svg" type="image/x-icon">
+    <link rel="icon" href="web/assets/img/logo.svg" type="image/x-icon">
     <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34=">
   
     <meta name="robots" content="noindex,nofollow">
@@ -42,17 +42,17 @@
 
 
         
-  <link href="assets/img/logo.svg" rel="shortcut icon" type="image/png" />
+  <link href="web/assets/img/logo.svg" rel="shortcut icon" type="image/png" />
  
-  <link rel="stylesheet" href="{{asset('assets/plugins/font-awesome/css/font-awesome.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/fonts/Linearicons/linearicons.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap4/css/bootstrap.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/owl-carousel/assets/owl.carousel.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/swiper/swiper-bundle.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/select2/dist/css/select2.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/lightGallery/css/lightgallery-bundle.min.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/plugins/nouislider/nouislider.css')}}" />
-  <link rel="stylesheet" href="{{asset('assets/css/style-rtl.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/font-awesome/css/font-awesome.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/fonts/Linearicons/linearicons.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/bootstrap4/css/bootstrap.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/owl-carousel/assets/owl.carousel.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/swiper/swiper-bundle.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/select2/dist/css/select2.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/lightGallery/css/lightgallery-bundle.min.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/plugins/nouislider/nouislider.css')}}" />
+  <link rel="stylesheet" href="{{asset('web/assets/css/style-rtl.css')}}" />
 
     
     <style>
@@ -64,9 +64,9 @@
 </head>
 <body class="noscroll">
    
-@include('../componants.header')
+@include('../web/componants.header')
 @yield('content')
-@include('../componants.footer')
+@include('../web/componants.footer')
 
 
 
@@ -83,7 +83,7 @@
 
   <!-- loader -->
   <div class="ps-preloader" id="preloader">
-    <img src="assets/img/logo.svg" alt="" />
+    <img src="web/assets/img/logo.svg" alt="" />
     <span class="loader"></span>
   </div>
 
@@ -298,19 +298,19 @@
     </div>
   </div>
  
-  <script src="{{asset('assets/plugins/jquery.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/popper.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/bootstrap4/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/select2/dist/js/select2.full.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{asset('assets/plugins/js-image-zoom.js')}}"></script>
-  <script src="{{asset('assets/plugins/lightGallery/js/lightgallery.umd.js')}}"></script>
-  <script src="{{asset('assets/plugins/lightGallery/js/lg-thumbnail.umd.js')}}"></script>
-  <script src="{{asset('assets/plugins/lightGallery/js/lg-zoom.umd.js')}}"></script>
-  <script src="{{asset('assets/plugins/nouislider/nouislider.js')}}"></script>
-  <script src="{{asset('assets/plugins/multi-countdown.js')}}"></script>
-  <script src="{{asset('assets/js/main-rtl.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/jquery.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/popper.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/bootstrap4/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/select2/dist/js/select2.full.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/js-image-zoom.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/lightGallery/js/lightgallery.umd.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/lightGallery/js/lg-thumbnail.umd.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/lightGallery/js/lg-zoom.umd.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/nouislider/nouislider.js')}}"></script>
+  <script src="{{asset('web/assets/plugins/multi-countdown.js')}}"></script>
+  <script src="{{asset('web/assets/js/main-rtl.js')}}"></script>
   @yield('java_script')
 </body>
 </html>
