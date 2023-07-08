@@ -12,12 +12,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('categories', function (Blueprint $table) {
-            $table->boolean('is_active')->default(1)->after('category_id');
-            $table->dropColumn('image');
-        });
-        Schema::table('categories', function (Blueprint $table) {
-            $table->string('image')->nullable()->after('name_ar');
+        Schema::create('contact_us_images', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('contact_id')->references('id')->on('contact_us');
+            $table->string('path');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('contact_us_images');
     }
 };

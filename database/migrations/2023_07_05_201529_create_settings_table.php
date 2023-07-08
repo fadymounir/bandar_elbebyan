@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('key_name');
-            $table->string('value_en')->nullable();
-            $table->string('value_ar')->nullable();
+            $table->text('value_en')->nullable();
+            $table->text('value_ar')->nullable();
             $table->string('path')->nullable();
             $table->enum('value_type', ['string','link','image', 'video']);
             $table->string('group')->nullable();

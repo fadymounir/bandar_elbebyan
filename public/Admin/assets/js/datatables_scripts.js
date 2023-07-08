@@ -48,24 +48,23 @@ class O_Datatable {
             ],
             fixedColumns: true,
             language: { // language settings
-                "lengthMenu": "<span class='dt-length-style'> &nbsp;List &nbsp;&nbsp;_MENU_ &nbsp;Item&nbsp;&nbsp; </span>",
-                "info": "<span class='dt-length-records'><i class='fa fa-globe'></i> &nbsp; Num Items :&nbsp;<span class='badge bold badge-dt'>_TOTAL_</span>&nbsp; </span>",
-                "infoEmpty": "<span class='dt-length-records'>No records found to show</span>",
-                "emptyTable": "No data available in table",
+                "lengthMenu": "<span class='dt-length-style'> &nbsp;عرض &nbsp;&nbsp;_MENU_ &nbsp;&nbsp;&nbsp; </span>",
+                "info": "<span class='dt-length-records'><i class='fa fa-globe'></i> &nbsp; عدد العناصر :&nbsp;<span class='badge bold badge-dt'>_TOTAL_</span>&nbsp; </span>",
+                "infoEmpty": "<span class='dt-length-records'>لا يوجد بيانات للعرض</span>",
+                "emptyTable": "لا يوجد بيانات للعرض",
                 "infoFiltered": "<span class=' '>(filtered from <span class='badge bold badge-dt'>_MAX_</span> total records)</span>",
                 "zeroRecords": "No matching records found",
                 "search": "",
                 "fixedColumns": true,
                 "paginate": {
-                    "previous": "Previous",
-                    "next": "Next",
-                    "last": "Last",
-                    "first": "First",
+                    "previous": "السابق",
+                    "next": "التالي",
+                    "last": "الاخير",
+                    "first": "الاول",
                     "page": "",
                     "pageOf": "<span class=' '>&nbsp;of&nbsFoundp;</span>",
-
                 },
-                "sProcessing": " <p class='alert alert-info'>   <i class=\"fas fa-sync fa-spin\"></i> </p>",
+                "sProcessing": " <p class='alert alert-primary'><i class=\"fas fa-sync fa-spin\"></i></p>",
                 "sPageButton": "button primary_button"
             }
 
