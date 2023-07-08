@@ -13,9 +13,11 @@ class Category extends Model
         'name_en',
         'image',
         'category_id',
-        'is_active'
+        'is_active',
     ];
-
+   public function sub_categories(){
+      return $this->hasMany(Category::class,'category_id','id');
+   }
     public function parentCategory(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
