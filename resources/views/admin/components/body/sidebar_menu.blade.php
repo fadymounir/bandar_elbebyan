@@ -71,45 +71,13 @@
                     </a>
                 </li>
 
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="{{route('admin.areas.index')}}" class="menu-link">
                         <i class="menu-icon fa fa-building"></i>
-                        <span class="menu-text">المناطق والمدن</span>
-                        <i class="menu-arrow"></i>
+                        <span class="menu-text">{{__('admin.area')}}</span>
                     </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">المناطق والمدن</span>
-                                </span>
-                            </li>
-
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{route('admin.areas.index')}}" class="menu-link">
-                                    <i class="menu-icon fa fa-code-branch"></i>
-                                    <span class="menu-text">{{__('admin.area')}}</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{route('admin.cities.index')}}" class="menu-link">
-                                    <i class="menu-icon fa fa-city"></i>
-                                    <span class="menu-text">{{__('admin.city')}}</span>
-                                </a>
-                            </li>
-
-                            <li class="menu-item" aria-haspopup="true">
-                                <a href="{{route('admin.districts.index')}}" class="menu-link">
-                                    <i class="menu-icon fa fa-chart-area"></i>
-                                    <span class="menu-text">{{__('admin.district')}}</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
                 </li>
+
 
 
             </ul>

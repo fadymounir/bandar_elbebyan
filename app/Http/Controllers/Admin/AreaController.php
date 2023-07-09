@@ -3,109 +3,82 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Dashboard;
-use App\Http\Requests\Admin\CreateAdmin;
-use App\Http\Requests\User\UpdateUser;
-use App\Models\User;
+use App\Http\Requests\Area\CreateArea;
+use App\Http\Requests\Area\UpdateArea;
+use App\Models\Location\Area;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AreaController extends Dashboard
 {
     public function index(Request $request)
     {
         if (\request()->ajax()) {
-            $users = User::query()->where('type', 'admin');
-            return datatables($users)
-                ->addColumn('name', function ($user) {
+            $areas = Area::query();
+            return datatables($areas)
+                ->addColumn('name_ar', function ($area) {
                     return $this->viewContent('span', [
-                        'content' => $user->name
+                        'content' => $area->name_ar
                     ]);
                 })
-                ->addColumn('email', function ($user) {
+                ->addColumn('name_en', function ($area) {
                     return $this->viewContent('span', [
-                        'content' => $user->email
+                        'content' => $area->name_en
                     ]);
                 })
-                ->addColumn('phone', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->phone
+                ->addColumn('cities', function ($area) {
+                    return $this->viewContent('ahref', [
+                        'content' => __('admin.cities'),
+                        'class'   => 'btn btn-primary',
+                        'path'    => route('admin.cities.index', ['area_id' => $area->id])
                     ]);
                 })
-                ->addColumn('is_active', function ($user) {
+                ->addColumn('is_active', function ($area) {
                     return $this->viewContent('span', [
-                        'content'      => $user->is_active ? __('admin.is_active') : __('admin.dis_active'),
-                        'class'        => $user->is_active ? 'btn btn-primary activation' : 'btn btn-danger activation',
-                        'free_content' => 'data-id="' . $user->id . '"'
+                        'content'      => $area->is_active ? __('admin.is_active') : __('admin.dis_active'),
+                        'class'        => $area->is_active ? 'btn btn-primary activation' : 'btn btn-danger activation',
+                        'free_content' => 'data-id="' . $area->id . '"'
                     ]);
                 })
-                ->addColumn('update', function ($user) {
+                ->addColumn('update', function ($area) {
                     return $this->viewContent('span', [
                         'content'      => __('admin.update') . '<i class="fa fa-user-edit"></i>',
-                        'class'        => 'btn btn-primary editUser',
-                        'free_content' => 'data-id="' . $user->id . '"'
-                    ]);
-                })
-                ->addColumn('role', function ($user) {
-                    return $this->viewContent('span', [
-                        'content'      => $user->role->name,
-                    ]);
-                })
-                ->addColumn('created_at', function ($user) {
-                    return $this->viewContent('span', [
-                        'content' => $user->created_at
+                        'class'        => 'btn btn-primary editArea',
+                        'free_content' => 'data-id="' . $area->id . '"'
                     ]);
                 })
                 ->make();
         }
-        return view('admin.subviews.admins.index');
+        return view('admin.subviews.areas.index');
     }
 
-    public function createAdmin(CreateAdmin $request)
+    public function createArea(CreateArea $request)
     {
-        User::create([
-            'name'     => $request->get('name'),
-            'email'    => $request->get('email'),
-            'phone'    => $request->get('phone'),
-            'type'     => 'admin',
-            'password' => Hash::make($request->get('password')),
-            'role_id'  => $request->get('role_id')
+        Area::create([
+            'name_ar' => $request->get('name_ar'),
+            'name_en' => $request->get('name_en'),
         ]);
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
-    public function activationAdmin(Request $request)
+    public function getAreaInfo(Request $request)
     {
-        $user            = User::find($request->get('user_id'));
-        $user->is_active = !$user->is_active;
-        $user->save();
+        return $this->getJsonSuccessResponse("", Area::find($request->get('areaId'))->toArray());
+    }
+
+    public function updateArea(UpdateArea $request)
+    {
+        Area::find($request->get('area_id'))->update([
+            'name_ar' => $request->get('name_ar'),
+            'name_en' => $request->get('name_en'),
+        ]);
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 
-    public function getAdminInfo(Request $request)
+    public function activationArea(Request $request)
     {
-        $user = User::where('id', $request->get('userId'))->select([
-            'name',
-            'email',
-            'phone',
-            'role_id',
-        ])->first()->toArray();
-        return $this->getJsonSuccessResponse("", $user);
-    }
-
-    public function updateAdmin(UpdateUser $request)
-    {
-        $attrsToUpdate = [
-            'name'    => $request->get('name'),
-            'email'   => $request->get('email'),
-            'phone'   => $request->get('phone'),
-            'role_id' => $request->get('role_id')
-        ];
-
-        if (!is_null($request->get('password'))) {
-            $attrsToUpdate['password'] = Hash::make($request->get('password'));
-        }
-
-        User::find($request->get('user_id'))->update($attrsToUpdate);
+        $area            = Area::find($request->get('areaId'));
+        $area->is_active = !$area->is_active;
+        $area->save();
         return $this->getJsonSuccessResponse(__('admin.you_operation_is_done_successfully'));
     }
 }

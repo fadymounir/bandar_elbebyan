@@ -1,7 +1,7 @@
 <script>
 
     function getAreaCities(areaId, callback = null) {
-        let path     = "{{route('admin.cities.getAreaCities')}}";
+        let path     = "{{route('admin.cities.getAreaCities',['area_id'])}}";
         let formData = new FormData();
         formData.append('areaId', areaId);
         ajaxRequest(path, formData, function (response) {
