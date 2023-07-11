@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\UserAddressController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,15 @@ Route::name('admin.')->prefix('adminPanel')->middleware(['isAdmin'])->group(func
         Route::post('/categories/updateCategory', 'updateCategory')->middleware('hasPermission:update-category')->name('update');
         Route::post('/categories/activation', 'activationCategory')->middleware('hasPermission:update-category')->name('activation');
         Route::post('/categories/getCategoryInfo', 'getCategoryInfo')->middleware('hasPermission:listening-categories')->name('getCategoryInfo');
+    });
+
+
+    Route::name('products.')->controller(ProductsController::class)->group(function () {
+        Route::get('/products', 'index')->middleware('hasPermission:listening-products')->name('index');
+        Route::post('/products/create', 'create')->middleware('hasPermission:create-product')->name('create');
+        Route::post('/products/update', 'update')->middleware('hasPermission:update-product')->name('update');
+        Route::post('/products/activation', 'activation')->middleware('hasPermission:update-product')->name('activation');
+        Route::post('/products/getProductInfo', 'getProductInfo')->middleware('hasPermission:listening-products')->name('getProductInfo');
     });
 
 
