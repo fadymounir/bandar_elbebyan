@@ -8,10 +8,10 @@
     <div class="page-content">
       <ul class="ps-breadcrumb">
         <li class="ps-breadcrumb__item">
-          <a href="index.html">الرئيسية</a>
+          <a href="/">الرئيسية</a>
         </li>
         <li class="ps-breadcrumb__item active" aria-current="page">
-          نبذه عن شركة بندر الدبيان
+         {{$aboutUsTitle->value_ar}}
         </li>
       </ul>
 
@@ -35,17 +35,10 @@
               </a>
             </div>
           </section>
-          <img class="about-img" src="web/assets/img/about.jpg" alt="" />
-          <h1 class="ps-page-name">نبذه عن شركة بندر الدبيان</h1>
+          <img class="about-img" src="{{url('/').'/'.$aboutUsCoverAttachment->path}}" alt="" />
+          <h1 class="ps-page-name">{{$aboutUsTitle->value_ar}}</h1>
           <p>
-            هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد
-            هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو
-            العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها
-            التطبيق. إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص
-            العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي
-            أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه
-            الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة
-            حقيقية لتصميم الموقع.
+            {!! $aboutUsDetails->value_ar !!}
           </p>
         </div>
         <div class="gallery-imgs" id="gallery-imgs">

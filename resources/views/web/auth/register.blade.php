@@ -30,7 +30,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
                 <div class="user-form-logo">
-                    <a href="index.html"><img src="web/assets/img/logo.svg" alt="logo" /></a>
+                    <a href="/"><img src="web/assets/img/logo.svg" alt="logo" /></a>
                 </div>
                 <div class="user-form-card">
                     <div class="user-form-title">
@@ -42,16 +42,14 @@
 
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}"  placeholder="الاسم" />
+                            <input type="text"  class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ old('name') }}"  placeholder="الاسم"  minlength="3" />
                             {{--@error('name')--}}
                             {{--<div class="alert alert-danger">{{ $message }}</div>--}}
                             {{--@enderror--}}
                         </div>
-                        <div class="form-group">
-                            <input type="text"  class="form-control @error('phone') is-invalid @enderror" name="phone" required value="{{ old('phone') }}" placeholder="رقم الجوال" />
-                            {{--@error('phone')--}}
-                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
-                            {{--@enderror--}}
+                        <div class="form-group input-group flex-nowrap">
+                            <input type="text"  minlength="9" maxlength="9"  class="form-control @error('phone') is-invalid @enderror" name="phone" required value="{{ old('phone') }}" placeholder="رقم الجوال" />
+                            <span class="input-group-text " id="addon-wrapping">966+</span>
                         </div>
                         <div class="form-group">
                             <input type="email"  class="form-control @error('email') is-invalid @enderror" name="email" required value="{{ old('email') }}" placeholder="البريد الإلكتروني" />
@@ -60,22 +58,22 @@
                             {{--@enderror--}}
                         </div>
                         <div class="form-group">
-                            <input type="password"  class="form-control @error('password') is-invalid @enderror" required name="password" placeholder="كلمة المرور" />
+                            <input type="password" minlength="6" id="password" onkeyup="checkConfirmPassword()"   class="form-control @error('password') is-invalid @enderror" required name="password" placeholder="كلمة المرور" />
                             <a class="fa fa-eye-slash toogle-password" href="javascript:;"></a>
                             {{--@error('password')--}}
                             {{--<div class="alert alert-danger">{{ $message }}</div>--}}
                             {{--@enderror--}}
                         </div>
+                        <p class="text-danger d-none small "  id="password_error">كلمة المرور وتاكيد كلمة المرور غير متطابقتان</p>
                         <div class="form-group">
-                            <input type="password"  class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="تأكيد كلمة المرور" />
+                            <input type="password" minlength="6" id="password_confirmation" onchange="checkConfirmPassword()"  class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="تأكيد كلمة المرور" />
                             <a class="fa fa-eye-slash toogle-password" href="javascript:;"></a>
                             {{--@error('password_confirmation')--}}
                             {{--<div class="alert alert-danger">{{ $message }}</div>--}}
                             {{--@enderror--}}
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="check"  required/><label class="form-check-label"
-                                                                                                         for="check">أوافق على
+                            <input class="form-check-input" type="checkbox" value="" id="check"  required/><label class="form-check-label" for="check">أوافق على
                                 <a href="#" data-toggle="modal" data-target="#privacy">سياسة الخصوصية</a></label>
                         </div>
                         <div class="form-button">
@@ -140,6 +138,29 @@
 <script src="web/assets/plugins/js-image-zoom.js"></script>
 <script src="web/assets/plugins/multi-countdown.js"></script>
 <script src="web/assets/js/main-rtl.js"></script>
+
+
+<script>
+$(document).ready(function () {
+
+
+});
+function  checkConfirmPassword() {
+    var pwassword=$("#password").val();
+    var password_confirmation=$("#password_confirmation").val();
+
+    if(pwassword !='' && password_confirmation!=''){
+        if(pwassword != password_confirmation){
+           $("#password_error").removeClass('d-none')
+        }
+        else {
+            $("#password_error").addClass('d-none')
+        }
+    }
+
+}
+</script>
 </body>
+
 
 </html>

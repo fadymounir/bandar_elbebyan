@@ -61,6 +61,8 @@ class RegistrationController extends Controller
     {
         $request->validate([
             'email'    => 'required|exists:users,email',
+        ],[
+            'email.exists' => 'The Email Not Exist',
         ]);
         $credentials = $request->only('email');
         $SixDigitRandomNumber = rand(100000,999999);
@@ -195,10 +197,16 @@ class RegistrationController extends Controller
             'name'     => 'required|min:3',
             'email'    => 'required|string|email|max:100|unique:users',
             'password' => 'required|confirmed|min:6',
-            'phone'    => 'required|min:11|max:11|unique:users|regex:/[0-9]{11}/',
+            'phone'    => 'required|min:9|max:9|unique:users|regex:/[0-9]{9}/',
+        ],[
+            'email.unique' => 'This Email Address Is Already Used By Another User',
+            'name.min' => 'The Name must be at least :min charts',
+            'password.min' => 'The password must be at least :min charts',
+            'phone.min' => 'The phone must be at least :min Numbers',
         ]);
         $data              = $request->only(['name','email','password','phone']);
         $data['password']         = Hash::make($request->input('password'));
+        $data['phone']         = '966'.$request->input('phone');
         $data['type']         = 'user';
         $user                     = User::create($data);
         if ($user) {
@@ -217,7 +225,7 @@ class RegistrationController extends Controller
             'address'              => 'required|string|max:255',
             'email'                => 'required|string|email|max:100|unique:users',
             'password'             => 'required|min:6',
-            'phone'                => 'required|min:11|max:11|unique:users|regex:/(01)[0-9]{9}/',
+            'phone'                => 'required|min:9|max:9|unique:users|regex:/(01)[0-9]{9}/',
             'gender'               => 'required',
             'country_id'           => 'required',
             'city_id'              => 'required',
@@ -300,7 +308,7 @@ class RegistrationController extends Controller
                 'lname'    => 'required|string|max:10|regex:/^[a-zA-ZÑñ\s]+$/',
                 'mname'    => 'required|string|max:10|regex:/^[a-zA-ZÑñ\s]+$/',
                 'email'    => 'required|string|max:255|unique:users,email,' . $currentuser->id,
-                'phone'    => 'required|max:11|min:11|regex:/(01)[0-9]{9}/|unique:users,phone,' . $currentuser->id,
+                'phone'    => 'required|max:9|min:9|regex:/(01)[0-9]{9}/|unique:users,phone,' . $currentuser->id,
                 'password' => 'nullable|string|min:6',
             ]);
             $data              = $request->only(['email','phone','password']);
@@ -414,6 +422,9 @@ class RegistrationController extends Controller
         $request->validate([
             'email'    => 'required|exists:users,email',
             'password' => 'required|min:6',
+        ],[
+            'email.exists' => 'The Email Not Exist',
+            'password.min' => 'The password must be at least :min charts',
         ]);
         $credentials = $request->only('email', 'password');
 

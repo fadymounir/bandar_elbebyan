@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [GeneralController::class, 'index'])->name('welcome');
 Route::get('/about', [GeneralController::class, 'about'])->name('about');
 Route::get('/contact', [GeneralController::class, 'contact'])->name('contact');
+Route::post('/contactRequest', [GeneralController::class, 'contactRequest'])->name('contactRequest');
 Route::get('/getAllCategories', [GeneralController::class, 'getAllCategories'])->name('getAllCategories');
 Route::get('/loginForm', [RegistrationController::class, 'loginForm'])->name('loginForm');
 Route::get('/recover-password', [RegistrationController::class, 'recoverPassword'])->name('recover-password');

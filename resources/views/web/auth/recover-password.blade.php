@@ -38,14 +38,14 @@
                         <p>قم بإدخال البريد الالكتروني</p>
                     </div>
 
-
+                    @include('web.componants.messages')
                         <form class="user-form" method="POST" action="{{url('forgot') }}">
                             {{ csrf_field() }}
                         <div class="form-group">
-                            <input type="email" name="email"  class="form-control @error('email') is-invalid @enderror" placeholder="البريد الإلكتروني" />
-                            @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <input type="email" name="email" required  class="form-control @error('email') is-invalid @enderror" placeholder="البريد الإلكتروني" />
+                            {{--@error('email')--}}
+                            {{--<div class="alert alert-danger">{{ $message }}</div>--}}
+                            {{--@enderror--}}
                         </div>
                         <div class="form-button">
                             <button type="submit" class="ps-btn ps-btn--warning">
