@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\RolesPermission\Profile;
 use App\Models\RolesPermission\Role;
 use Illuminate\Database\Seeder;
-use App\Models\RolesPermission\Permission;
 
 class DefaultProfileAndRole extends Seeder
 {
